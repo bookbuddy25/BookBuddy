@@ -1,0 +1,14 @@
+/node_modules
+/controller
+/models
+/routes
+/services
+/utils
+
+.env 
+server.js
+db.js
+responseCode.js
+
+package-lock.json
+package.json
