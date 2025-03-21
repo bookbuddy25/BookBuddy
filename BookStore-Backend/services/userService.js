@@ -110,7 +110,7 @@ async function updateAddress(req, res) {
         return res.status(STATUS.SERVER_ERROR).json({ message: "Internal server error" });
     }
 
-    return res.status(STATUS.SUCCESS).json({ message: "Address updated successfuly" });
+    return res.status(STATUS.SUCCESS).json({ message: "Address updated successfully" });
 }
 
 export {
