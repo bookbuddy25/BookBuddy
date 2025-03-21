@@ -24,7 +24,7 @@ async function getUser(user_id) {
 async function editAddress(user_id, address) {
     try {
         const data = await User.findByIdAndUpdate(user_id, { address: address });
-        return { success: true };
+        return { success: true, message: "Address updated successfuly" };
     } catch (error) {
         return { success: false, message: "Internal server error" }
     }
