@@ -17,7 +17,7 @@ const authenticateToken = async (req, res, next) => {
             return res.status(STATUS.FORBIDDEN).json({ message: "Token expired. Please signin again !" });
         }
 
-        req.user = user;
+        req.decoded = user;
         next();
     })
 }
