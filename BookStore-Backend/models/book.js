@@ -27,4 +27,4 @@ const book = new mongoose.Schema({
     },
 }, { timestamps: true });
 
-module.exports = mongoose.model("books", book);
+export default mongoose.model("books", book);
