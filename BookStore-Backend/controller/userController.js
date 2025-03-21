@@ -5,7 +5,7 @@ async function createUser(user) {
 
         const newUser = new User(user);
         await newUser.save();
-        return { success: true, message: "Account Created Successfuly" };
+        return { success: true, message: "Account Created Successfully" };
 
     } catch (error) {
         return { success: false, message: "Internal server error" }
