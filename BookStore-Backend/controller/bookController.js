@@ -1,5 +1,27 @@
 import Book from "../models/book.js";
 
+async function getBookList() {
+    try {
+
+        const books = await Book.find().sort({ createdAt: -1 });
+        return { success: true, data: books };
+
+    } catch (error) {
+        return { success: false, message: "Internal server error" }
+    }
+}
+
+async function getBookById(id) {
+    try {
+
+        const books = await Book.findById(id);
+        return { success: true, data: books };
+
+    } catch (error) {
+        return { success: false, message: "Internal server error" }
+    }
+}
+
 async function createNewBook(book) {
     try {
 
@@ -49,6 +71,8 @@ async function deleteBookById(book_id) {
 }
 
 export {
+    getBookList,
+    getBookById,
     createNewBook,
     updateBookById,
     deleteBookById,

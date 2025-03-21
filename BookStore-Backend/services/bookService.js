@@ -1,9 +1,36 @@
 import STATUS from "../utlis/responseCode.js";
 import User from '../models/user.js'
 import dotenv from 'dotenv';
-import { createNewBook, deleteBookById, updateBookById } from "../controller/bookController.js";
+import { getBookList, createNewBook, deleteBookById, updateBookById, getBookById } from "../controller/bookController.js";
 import mongoose from "mongoose";
 dotenv.config()
+
+async function getAllBooks(req, res) {
+    try {
+        const data = await getBookList();
+        
+        if(data.success) {
+            return res.status(STATUS.SUCCESS).json({ data: data.data });
+        }
+            
+    } catch (error) {
+        return res.status(STATUS.SERVER_ERROR).json({ message: "An error occurred" });
+    }
+}
+
+async function getBookDetail(req, res) {
+    try {
+        const { id } = req.params;
+        const data = await getBookById(id);
+        
+        if(data.success) {
+            return res.status(STATUS.SUCCESS).json({ data: data.data });
+        }
+            
+    } catch (error) {
+        return res.status(STATUS.SERVER_ERROR).json({ message: "An error occurred" });
+    }
+}
 
 async function createBook(req, res) {
     const { id } = req.headers;
@@ -72,6 +99,8 @@ async function deleteBook(req, res) {
 }
 
 export {
+    getAllBooks,
+    getBookDetail,
     createBook,
     updateBook,
     deleteBook,
