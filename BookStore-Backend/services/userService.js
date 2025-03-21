@@ -100,17 +100,17 @@ async function updateAddress(req, res) {
     const { address } = req.body;
 
     if(!address || address.length < 3) {
-        return res.status(STATUS.BAD_REQUEST).json({ message: "Internal server error" });
+        return res.status(STATUS.BAD_REQUEST).json({ message: "Please provide valid address" });
     }
 
     // check username already exist
     const data = await editAddress(id, address);
 
     if(!data.success) {
-        return res.status(STATUS.SERVER_ERROR).json({ message: "Internal server error" });
+        return res.status(STATUS.SERVER_ERROR).json({ message: data.message });
     }
 
-    return res.status(STATUS.SUCCESS).json({ message: "Address updated successfully" });
+    return res.status(STATUS.SUCCESS).json({ message: data.message });
 }
 
 export {
