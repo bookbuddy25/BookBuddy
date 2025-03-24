@@ -1,7 +1,7 @@
 import STATUS from "../utlis/responseCode.js";
 import User from '../models/user.js'
 import dotenv from 'dotenv';
-import { addToFavourite, removeFavourite } from "../controller/favouriteController.js";
+import { addToFavourite, getFavouriteList, removeFavourite } from "../controller/favouriteController.js";
 dotenv.config()
 
 async function addBookToFavourite(req, res) {
@@ -47,10 +47,10 @@ async function removeBookFromFavourite(req, res) {
 async function getFavouriteBooks(req, res) {
     try {
         const { id } = req.headers;
-        const res = await getFavouriteList(id);
+        const result = await getFavouriteList(id);
 
-        if(res.success) {
-            return res.status(STATUS.SUCCESS).json({ message: res.data });
+        if(result.success) {
+            return res.status(STATUS.SUCCESS).json({ success: result.success, data: result.data });
         }
 
     } catch (error) {
