@@ -1,9 +1,7 @@
 import STATUS from "../utlis/responseCode.js";
 import User from '../models/user.js'
-import dotenv from 'dotenv';
 import { getBookList, createNewBook, deleteBookById, updateBookById, getBookById } from "../controller/bookController.js";
 import mongoose from "mongoose";
-dotenv.config()
 
 async function getAllBooks(req, res) {
     try {
