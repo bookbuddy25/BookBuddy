@@ -6,6 +6,7 @@ import dotenv from 'dotenv';
 import connect from './utlis/db.js';
 import userRoute from './routes/user.js';
 import booksRoute from './routes/book.js';
+import favouriteRoute from './routes/favourite.js';
 import cartsRoute from './routes/cart.js';
 
 dotenv.config()
@@ -19,6 +20,7 @@ app.use(express.json());
 
 app.use("/api/v1", userRoute);
 app.use("/api/v1", booksRoute);
+app.use("/api/v1", favouriteRoute);
 app.use("/api/v1", cartsRoute);
 
 app.get("/", function(req, res) {
