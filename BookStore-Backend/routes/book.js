@@ -1,5 +1,5 @@
 import express from "express";
-const cartsRouterouter = express.Router();
+const router = express.Router();
 import { adminAuthenticateToken } from "../middleware/adminAuth.js";
 import { createBook, deleteBook, getAllBooks, getBookDetail, updateBook } from "../services/bookService.js";
 

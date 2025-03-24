@@ -1,8 +1,6 @@
 import STATUS from "../utlis/responseCode.js";
 import User from '../models/user.js'
-import dotenv from 'dotenv';
 import { addToFavourite, getFavouriteList, removeFavourite } from "../controller/favouriteController.js";
-dotenv.config()
 
 async function addBookToFavourite(req, res) {
     try {
@@ -35,7 +33,7 @@ async function removeBookFromFavourite(req, res) {
             const data = await removeFavourite(id, book_id);
 
             if(data.success) {
-                return res.status(STATUS.SUCCESS).json({ message: data.message });
+                return res.status(STATUS.SUCCESS).json({ success: data.success, message: data.message });
             }
         } 
 
